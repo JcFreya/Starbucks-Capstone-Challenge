@@ -44,6 +44,8 @@ Here is the schema and explanation of each variable in the files:
 * time (int) - time in hours since start of test. The data begins at time t=0
 * value - (dict of strings) - either an offer id or transaction amount depending on the record
 
+## There's also a Medium link[https://medium.com/@yfan941101/how-to-send-out-starbucks-offer-in-a-smart-way-9321cbf3ee4d] with the project summary.
+
 ## Licensing, Authors, Acknowledgements, etc.
 This project was authored by Fan Yuan.
 Thanks to Starbucks for the dataset, and to Udacity for bringing the opportunity to work with it.
