@@ -1,16 +1,13 @@
 # Starbucks-Capstone-Challenge
 
 ## Context
-This data set contains simulated data that mimics customer behavior on the Starbucks rewards mobile app. Once every few days, Starbucks sends out an offer to users of the mobile app. An offer can be merely an advertisement for a drink or an actual offer such as a discount or BOGO (buy one get one free). Some users might not receive any offer during certain weeks.
+As one of the biggest coffee giants in the world, Starbucks operates more than 31,000 stores worldwide, in 2017, Starbucks launched its most advanced AI-driven initiative “Deep Brew”. The brand’s custom-made recommendation platform was built to reach customers across multiple channels, including the Starbucks ordering app. The industry-leading Starbucks Rewards Program has continued to flourish since its introduction in 2007. Obviously, it becomes more and more important to leverage the AI technology to enhance the customer experience.
 
-Not all users receive the same offer, and that is the challenge to solve with this data set.
-
-The task is to combine transaction, demographic and offer data to determine which demographic groups respond best to which offer type. This data set is a simplified version of the real Starbucks app because the underlying simulator only has one product whereas Starbucks actually sells dozens of products.
-
-Every offer has a validity period before the offer expires. As an example, a BOGO offer might be valid for only 5 days. In the data set that informational offers have a validity period even though these ads are merely providing information about a product; for example, if an informational offer has 7 days of validity, you can assume the customer is feeling the influence of the offer for 7 days after receiving the advertisement.
 
 ## The Goal
-The basic task is to use the data to identify which groups of people are most responsive to each type of offer, and how best to present each type of offer.
+Since it’s important to provide customized experience from ordering to offer on loyalty app, the problem becomes to how to correctly and precisely locate the target customer group. That is, the task is to decide what the best-personalized offer is to send to users so that the conversion rate can be maximized. Also, it’s critical to know which groups of people are most responsive to each type of offer, and how best to present each type of offer.
+
+The plan of this project is to build a machine learning model to decide which is the best type of offer to send to each customer. The dataset will be separated into three types of offer and fit the data into three supervised classification models. Using this way, the model will predict whether the offer will be responded by customer or not when sent to them. Also, by investigating the feature importance of the model, it can help answer the question that what factors mainly affect people to make the decision and finally complete the transaction. Therefore, with the solution above, it’ll be easier and more accurate to identify which groups of people are most responsive to each type of offer, and how best to present each type of offer.
 
 
 ## Data Sets
@@ -21,7 +18,7 @@ The data is contained in three files:
 * profile.json - demographic data for each customer
 * transcript.json - records for transactions, offers received, offers viewed, and offers completed
 
-Here is the schema and explanation of each variable in the files:
+Following is the schema and explanation of each variable in the files:
 
 **portfolio.json**
 * id (string) - offer id
@@ -44,7 +41,27 @@ Here is the schema and explanation of each variable in the files:
 * time (int) - time in hours since start of test. The data begins at time t=0
 * value - (dict of strings) - either an offer id or transaction amount depending on the record
 
-## There's also a Medium [link](https://medium.com/@yfan941101/how-to-send-out-starbucks-offer-in-a-smart-way-9321cbf3ee4d) with the project summary.
+## Project design
+The project is designed with the following steps:
+
+- Prepare and clean data -- combine transaction, demographic and offer data. Understand the connection between columns and dataset. Try to get the useful information from data as much as possible.  
+
+- Data exploration -- In order to analyze the problem better in next sections, first need to explore the datasets which includes checking the missing value, visualizing the data distribution, etc.  
+
+- Data preprocessing -- In order to find out what mainly affect the finish of the transaction by sending the offer, in the data processing process, also need to process the data to merge the events of each specific offer sent so as to find out which offer were received, viewed and finally completed with a transaction.  
+
+- Feature engineering -- After basic processing, the next step will look if there are any columns that can be used to create new features. For example, generating a new column for length of customer’s membership, the count of offer received for each user, calculate the time lap between offers, etc.  
+
+- Building model – after pre-processing and feature engineering, next step is to build the model using response flag generated in previous steps to predict whether the customer will respond to the offer or not.  
+
+- Model tuning – Compare the model using metrics selected above and tune the parameters of initial model using GridSearch method to get higher performance.  
+
+- Conclusion and further improvement – compare the final selected model to benchmark to see if the solution provide a better personalized offer. Also, review the built process and see if there’s any opportunities to enhance the model in the future.  
+
+__Notes:__ more details please refer to proposal.pdf
+
+
+## There's also a Medium post [link](https://medium.com/@yfan941101/how-to-send-out-starbucks-offer-in-a-smart-way-9321cbf3ee4d) with the project summary.
 
 ## Licensing, Authors, Acknowledgements, etc.
 This project was authored by Fan Yuan.
